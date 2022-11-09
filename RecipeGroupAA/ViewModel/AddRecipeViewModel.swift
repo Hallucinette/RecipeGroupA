@@ -13,6 +13,27 @@ class AddRecipeViewModel: ObservableObject {
     
     var endPoint = "https://recipe-app-group-a.herokuapp.com"
     
+    // - MARK: Fonction READ
+    func getIngredientFromApi() async throws -> (Recipe) {
+        guard let url = URL(string: "\(endPoint)/recipes/ingredient")
+        else {
+            fatalError("Missing URL")
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        guard (response as? HTTPURLResponse)?.statusCode == 200
+        else {
+            fatalError("Error while fetching data")
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let recipe = try decoder.decode(Recipe.self, from: data)
+        
+        print("succes: \(recipe)")
+        return recipe
+        
+    }
     
     // - MARK: Fonction READ
     func getRecipeFromApi() async throws -> (Recipe) {

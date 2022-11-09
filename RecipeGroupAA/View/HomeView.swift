@@ -37,7 +37,7 @@ struct HomeView: View {
 
             
             CategoryView()
-            RecipeView()
+           // RecipeView()
         }
     }
     }

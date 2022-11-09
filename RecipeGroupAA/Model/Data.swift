@@ -30,7 +30,6 @@ enum Season: String {
 }
 
 // MARK: - RecipeIngredient
-
 struct RecipeIngredient: Codable, Hashable {
     var recipeIngredientID: Int
     var quantity: Int
@@ -69,14 +68,6 @@ struct Recipe: Codable {
     var steps: [Step]
 }
 
-// MARK: - Ingredient
-struct IngredientElement: Codable {
-    var id: Int
-    var name: String
-    var createdAt: String
-    var updatedAt: String
-}
-
 // MARK: - Materiel
 struct Materiel: Codable {
     var id: Int
@@ -94,7 +85,7 @@ struct Ingredient: Codable {
 
 
 // MARK: - Step
-struct Step: Codable {
+struct Step: Codable, Hashable {
     var id: Int
     var etape: String
     var stepDescription: String

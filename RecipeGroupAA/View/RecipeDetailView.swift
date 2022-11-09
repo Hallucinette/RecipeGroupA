@@ -6,25 +6,25 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct RecipeDetailView: View {
-       @State var recipes: Recipe
-    //@EnvironmentObject var recipes: RecipeViewModel
+    @State var recipes: Recipe
+    @State var ingredients: Ingredient
+
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 ImageRecipe(recipes: recipes)
                     .padding()
                 BarInfo(recipes: recipes)
-//                pickerView(recipes: recipes, ingredients: [Ingredient])
+                pickerView(recipes: recipes, ingredients: ingredients)
+                //, ingredients: ingredients)
                     .padding()
                 preparation()
                     .padding()
-                
-                // forEach step ....
-                StepView()
-                StepView()
-                StepView()
+
+                StepView(recipes: recipes)
                 
                 Text("Bon appetit !")
                     .foregroundColor(.green)
@@ -42,7 +42,7 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(recipes: .preview)
+        RecipeDetailView(recipes: .preview, ingredients: .ingre)
     }
 }
 
@@ -51,7 +51,7 @@ struct RecipeDetailView_Previews: PreviewProvider {
 struct pickerView: View {
     @State private var selected = 0
     @State var recipes: Recipe
-    var ingredients: [Ingredient]
+    var ingredients: Ingredient
     var body: some View {
         VStack{
             Picker("Choose", selection: $selected) {
@@ -63,18 +63,26 @@ struct pickerView: View {
             .pickerStyle(.segmented)
             if selected == 0 {
                 VStack(alignment: .leading){
-//                    ForEach(recipes.recipeIngredients, id: \.self) { ingred in
-//                        if RecipeIngredient.ingredientID == Ingredient.id {
-//                            Text(Ingredient.name)
+//                    ForEach(recipes.recipeIngredients, id: \.self) {
+//                        ingred in
+//                        var idIngreRec = ingred.recipeIngredientID
+//                            Text(String(idIngreRec))
+//                        ForEach(ingredients.id) { valu in
+//                            if valu == idIngreRec {
+//                                Text(valu.name)
+//                            }
+//
 //                        }
-                    ForEach(recipes.recipeIngredients, id: \.self) { ingred in
-                        var id = ingred.ingredientID
-//                        if id == ingredients.filter(ingredients.id){
-//                           // Text(ingredients.name)
+//                    }
+//                    ForEach(ingredients.id) { valu in
+//                        if valu == idIngreRec {
+//                            Text(valu.name)
 //                        }
-//                        recupérer les id des ingredients de la recette
-//                        for each ingredients et if ingredient.id match avec recipes.recipeIngredients.ingredientID alors affiche le nom de l'ingredient
-                    }
+//
+//                    }
+                    
+//  recupérer les id des ingredients de la recette
+//  for each ingredients et if ingredient.id match avec recipes.recipeIngredients.ingredientID alors affiche le nom de l'ingredient
                     
                     Text("sel")
                         .multilineTextAlignment(.leading)
@@ -90,18 +98,28 @@ struct pickerView: View {
     }
 }
 
+func addOne(num: Int) -> Int {
+    var num = num
+    num += 1
+ //   print(num)
+    return num
+}
 
 struct StepView: View {
+    @State var recipes: Recipe
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Etape1")
-                .padding()
-            HStack{
-                Text("Ajouter la carotte et la branche de céleri hachée puis la viande et faire revenir le tout.")
+        ForEach(recipes.steps, id: \.self) {
+            step in
+            VStack(alignment: .leading) {
+                Text(step.etape + " " + String(step.id))
                     .padding()
+                HStack {
+                    Text(step.stepDescription)
+                        .padding()
+                }
+                GreenLign()
+                    .padding(.bottom)
             }
-            GreenLign()
-                .padding()
         }
     }
 }
