@@ -34,6 +34,7 @@
 		7B14A26E2915B3A7009B322A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B14A26D2915B3A7009B322A /* Assets.xcassets */; };
 		7B14A2712915B3A7009B322A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B14A2702915B3A7009B322A /* Preview Assets.xcassets */; };
 		7B14A27B2915B3FC009B322A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14A27A2915B3FC009B322A /* Data.swift */; };
+		D98F2EFF291BE47300929FB3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F2EFE291BE47300929FB3 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		7B14A26D2915B3A7009B322A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B14A2702915B3A7009B322A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B14A27A2915B3FC009B322A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		D98F2EFE291BE47300929FB3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				700EADE7291BC0FB00A83A01 /* RecipeDetailViewModel.swift */,
 				700EADD8291BBBDC00A83A01 /* UserViewModel.swift */,
 				70F79F592919458400696014 /* AddRecipeViewModel.swift */,
+				D98F2EFE291BE47300929FB3 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				700EADE1291BBF2900A83A01 /* CategoryView.swift in Sources */,
 				709BCC402918FF630056BD37 /* AddRecipeView.swift in Sources */,
 				7B14A26A2915B3A5009B322A /* RecipeGroupAAApp.swift in Sources */,
+				D98F2EFF291BE47300929FB3 /* HomeViewModel.swift in Sources */,
 				700EADE6291BBF4800A83A01 /* ExtensionColor.swift in Sources */,
 				700EADD7291BBBC500A83A01 /* UserView.swift in Sources */,
 				70F79F562919184100696014 /* Price.swift in Sources */,

@@ -13,16 +13,15 @@ struct ContentView: View {
                 .tabItem{
                     Label("Recettes", systemImage: "list.dash")
                 }
-//            FavoriView()
-//                .tabItem{
-//                    Label("Favoris", systemImage: "heart")
-//                }
-//
-//            UserView()
-//                .tabItem{
-//                    Label("Profile", systemImage: "person.fill")
-//
-//                } A RAJOUTER A L'ASSEMBLAGE DES FICHIERS
+            FavoriView()
+                .tabItem{
+                    Label("Favoris", systemImage: "heart")
+                }
+
+            UserView(user: User(id: 1, firstName: "", lastName: "", imageName: "", email: "", password: ""))
+                .tabItem{
+                    Label("Profile", systemImage: "person.fill")
+                }
         }
     }
 }

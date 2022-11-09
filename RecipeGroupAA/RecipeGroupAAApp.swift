@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct RecipeGroupAAApp: App {
     @StateObject var addrecipeVM = AddRecipeViewModel()
+    @StateObject var homeVM = HomeViewModel()
     var body: some Scene {
         WindowGroup {
-            AddRecipeView()
+            ContentView()
                 .environmentObject(addrecipeVM)
+                .environmentObject(homeVM)
         }
     }
 }
