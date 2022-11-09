@@ -70,6 +70,7 @@ struct AddRecipeView: View {
 struct AddRecipeView_Previews: PreviewProvider {
     static var previews: some View {
         AddRecipeView()
+            .environmentObject(AddRecipeViewModel())
     }
 }
 
