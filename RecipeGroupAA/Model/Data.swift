@@ -29,64 +29,96 @@ enum Season: String {
     case spring = "printemps"
 }
 
-// MARK: - Recipe
-struct Recipe: Identifiable {
-    var id: Int
-    var price: Int
-    var userID: Int
+// MARK: - RecipeIngredient
+
+struct RecipeIngredient: Codable, Hashable {
+    var recipeIngredientID: Int
+    var quantity: Int
+    var unity: String
+    var recipeID: Int
+    var ingredientID: Int
     var createdAt: String
     var updatedAt: String
+
+}
+
+// MARK: - RecipeMaterielElement
+struct RecipeMateriel: Codable {
+    var recipeMateriel: Int
+    var recipeID: Int
+    var materielID: Int
+    var createdAt: String
+    var updatedAt: String
+}
+
+// MARK: - Recipe
+struct Recipe: Codable {
+    var id: Int
     var title: String
     var time: String
-    var image: String
-    var difficulty: Difficulty
-    var category: Category
-    var season: Season
-    var id_user: User
-  //  var users: [JSONAny]
-    
-    enum CodingKeys: String, CodingKey {
-        case id, title, time, difficulty, category, season, image, price, createdAt, updatedAt
-        case userID = "userId"
-       // case users
-    }
+    var difficulty: String
+    var category: String
+    var season, image: String
+    var price: Int
+    var createdAt: String
+    var updatedAt: String
+    var userID: Int
+    var users: [User]
+    var recipeIngredients: [RecipeIngredient]
+    var recipeMateriels: [RecipeMateriel]
+    var steps: [Step]
 }
 
 // MARK: - Ingredient
-struct Ingredient: Codable {
+struct IngredientElement: Codable {
     var id: Int
     var name: String
+    var createdAt: String
+    var updatedAt: String
 }
 
 // MARK: - Materiel
 struct Materiel: Codable {
     var id: Int
     var name: String
+    var createdAt: String
+    var updatedAt: String
 }
-
-// MARK: - User
-struct User: Codable {
+// MARK: - Ingredient
+struct Ingredient: Codable {
     var id: Int
-    var firstname: String
-    var lastname: String
-    var email: String
-    var password: String
-    var createdAt, updatedAt: String
+    var name: String
+    var createdAt: String
+    var updatedAt: String
 }
 
-// MARK: - Recipe_Ingredient
-struct Recipe_Ingredient: Identifiable {
-    var id = UUID()
-    var measure: String
-    var quantity: Int
-    var id_ingredient: Ingredient
-    var id_recipe: Recipe
-}
 
 // MARK: - Step
-struct Step: Identifiable {
+struct Step: Codable {
     var id: Int
-    var step: String
-    var description: String
-    var id_recipe: Recipe
+    var etape: String
+    var stepDescription: String
+    var createdAt: String
+    var updatedAt: String
+    var recipeID: Int
+}
+// MARK: - User
+struct User: Codable, Identifiable {
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var imageName: String
+    var email: String
+    var password: String
+//    var createdAt: String
+//    var updatedAt: String
+}
+
+
+// MARK: - FavoriteElement
+struct Favorite: Codable {
+    var createdAt: String
+    var updatedAt: String
+    var userID: Int
+    var recipeID: Int
 }
