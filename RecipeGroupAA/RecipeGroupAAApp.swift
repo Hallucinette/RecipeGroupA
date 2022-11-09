@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct RecipeGroupAAApp: App {
+    @StateObject var addrecipeVM = AddRecipeViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AddRecipeView()
+                .environmentObject(addrecipeVM)
         }
     }
 }
