@@ -18,6 +18,7 @@ struct ButtonShare: View {
                 Label("Partager la recette", systemImage:  "square.and.arrow.up")
             }
         }
+        .padding()
     }
 }
 

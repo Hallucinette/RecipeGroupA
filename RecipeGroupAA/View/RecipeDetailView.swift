@@ -11,18 +11,15 @@ import Foundation
 struct RecipeDetailView: View {
     @State var recipes: Recipe
     @State var ingredients: Ingredient
+    @State var materiels: Materiel
 
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 ImageRecipe(recipes: recipes)
-                    .padding()
                 BarInfo(recipes: recipes)
-                pickerView(recipes: recipes, ingredients: ingredients)
-                //, ingredients: ingredients)
-                    .padding()
+                pickerView(recipes: recipes, ingredients: ingredients, materiels: materiels)
                 preparation()
-                    .padding()
 
                 StepView(recipes: recipes)
                 
@@ -32,7 +29,6 @@ struct RecipeDetailView: View {
                     .padding(.vertical)
                 
                 ButtonShare()
-                    .padding()
                 Spacer()
             }
             .padding()
@@ -42,7 +38,7 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(recipes: .preview, ingredients: .ingre)
+        RecipeDetailView(recipes: .preview, ingredients: .ingre, materiels: .mat)
     }
 }
 
@@ -52,6 +48,7 @@ struct pickerView: View {
     @State private var selected = 0
     @State var recipes: Recipe
     var ingredients: Ingredient
+    var materiels: Materiel
     var body: some View {
         VStack{
             Picker("Choose", selection: $selected) {
@@ -61,48 +58,25 @@ struct pickerView: View {
                     .tag(1)
             }
             .pickerStyle(.segmented)
+            .padding()
             if selected == 0 {
-                VStack(alignment: .leading){
-//                    ForEach(recipes.recipeIngredients, id: \.self) {
-//                        ingred in
-//                        var idIngreRec = ingred.recipeIngredientID
-//                            Text(String(idIngreRec))
-//                        ForEach(ingredients.id) { valu in
-//                            if valu == idIngreRec {
-//                                Text(valu.name)
-//                            }
-//
-//                        }
-//                    }
-//                    ForEach(ingredients.id) { valu in
-//                        if valu == idIngreRec {
-//                            Text(valu.name)
-//                        }
-//
-//                    }
-                    
-//  recupérer les id des ingredients de la recette
-//  for each ingredients et if ingredient.id match avec recipes.recipeIngredients.ingredientID alors affiche le nom de l'ingredient
-                    
-                    Text("sel")
-                        .multilineTextAlignment(.leading)
+                ForEach(recipes.recipeIngredients, id: \.self) { ingre in
+                    let ingre = ingre.recipeIngredientID
+                    if ingre == ingredients.id {
+                        Text("- " + ingredients.name)
+                    }
                 }
-                .padding(.vertical)
             } else {
-                Text("poele")
-                    .multilineTextAlignment(.leading)
-                    .padding(.vertical)
+                ForEach(recipes.recipeMateriels, id: \.self) { mat in
+                    let mat = mat.recipeMaterielID
+                    if mat == materiels.id {
+                        Text("- " + materiels.name)
+                    }
+                }
             }
         }
         .padding(.vertical)
     }
-}
-
-func addOne(num: Int) -> Int {
-    var num = num
-    num += 1
- //   print(num)
-    return num
 }
 
 struct StepView: View {

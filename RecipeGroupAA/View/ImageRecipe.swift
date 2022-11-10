@@ -26,6 +26,7 @@ struct ImageRecipe: View {
                     }
                 )
         }
+        .padding()
     }
 }
 

@@ -60,6 +60,7 @@ struct preparation: View {
                 .multilineTextAlignment(.leading)
            GreenLign()
         }
+        .padding()
     }
 }
 

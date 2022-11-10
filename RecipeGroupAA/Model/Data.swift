@@ -38,13 +38,13 @@ struct RecipeIngredient: Codable, Hashable {
     var ingredientID: Int
     var createdAt: String
     var updatedAt: String
-
 }
 
-// MARK: - RecipeMaterielElement
-struct RecipeMateriel: Codable {
-    var recipeMateriel: Int
+// MARK: - RecipeMateriel
+struct RecipeMateriel: Codable, Hashable {
+    var recipeMaterielID: Int
     var recipeID: Int
+    var quantity: Int
     var materielID: Int
     var createdAt: String
     var updatedAt: String
